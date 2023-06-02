@@ -23,7 +23,7 @@
     <canvas id="level-method-count-chart">레벨별 모듈 메소드</canvas>
 
     <script>
-        const url = "./data.json";
+        const url = "https://file.notion.so/f/s/ee82b112-6c8c-4c40-a3e8-b4e50239b0da/level_method_module_chart_data.json?id=f8954ca4-87d6-40f6-876b-ffaa8b627220&table=block&spaceId=579fe283-28aa-489d-ae65-d683304becfc&expirationTimestamp=1685777215015&signature=NsT25_vXDUzxzs-E8A9NvDrlG9wWLKB2P31wBeojVcs&downloadName=level_method_module_chart_data.json";
 
         fetch(url)
             .then(response => response.json())
@@ -124,7 +124,7 @@
                 var methodCountLvChart = new Chart(document.getElementById('method-count-chart'), {
                     type: 'bar',
                     data: {
-                        labels: ["range", "len", ".append", "int", "str", "sorted","sum","ord","max",".join","set",".count","list",".pop",".sort",".index",".popleft",".lower",".replace",".split","print","min","chr",".upper", "map","zip",".isdigit",".items",".find", "abs",".sub",".strip", ".compile","bin",".islower","input",".remove","enumerate",".isupper",".insert", ".get",".reverse",".findall",".isqrt",".gcd",".fromkeys","reversed",".zfill",".keys","divmod","dict",".values",".startswith","math","deque","re","combinations","collections","ceil","itertools"],
+                        labels: ["range", "len", ".append", "int", "str", "sorted", "sum", "ord", "max", ".join", "set", ".count", "list", ".pop", ".sort", ".index", ".popleft", ".lower", ".replace", ".split", "print", "min", "chr", ".upper", "map", "zip", ".isdigit", ".items", ".find", "abs", ".sub", ".strip", ".compile", "bin", ".islower", "input", ".remove", "enumerate", ".isupper", ".insert", ".get", ".reverse", ".findall", ".isqrt", ".gcd", ".fromkeys", "reversed", ".zfill", ".keys", "divmod", "dict", ".values", ".startswith", "math", "deque", "re", "combinations", "collections", "ceil", "itertools"],
                         datasets: [{
                             data: methodCountData,
                             backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
