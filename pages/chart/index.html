@@ -15,17 +15,20 @@
 </head>
 
 <body>
-    <h1>내코가석자다 진짜</h1>
+    <h1>내코는석자다 진짜</h1>
     <canvas id="level-count-chart">레벨별 문제수</canvas>
     <canvas id="level-problem-type-count-chart">레벨별 유형별 문제수</canvas>
-    <canvas id="level-problem-type-chart">레벨별 문제 유형 비율</canvas>
+    <canvas id="level0-problem-type-chart">레벨별 문제 유형 비율0</canvas>
+    <canvas id="level1-problem-type-chart">레벨별 문제 유형 비율1</canvas>
+    <canvas id="level2-problem-type-chart">레벨별 문제 유형 비율2</canvas>
+    <canvas id="level3-problem-type-chart">레벨별 문제 유형 비율3</canvas>
     <canvas id="method-count-chart">메소드 모듈 빈도수</canvas>
     <canvas id="level-method-count-chart">레벨별 모듈 메소드</canvas>
 
     <script>
-        const url = "https://file.notion.so/f/s/ee82b112-6c8c-4c40-a3e8-b4e50239b0da/level_method_module_chart_data.json?id=f8954ca4-87d6-40f6-876b-ffaa8b627220&table=block&spaceId=579fe283-28aa-489d-ae65-d683304becfc&expirationTimestamp=1685777215015&signature=NsT25_vXDUzxzs-E8A9NvDrlG9wWLKB2P31wBeojVcs&downloadName=level_method_module_chart_data.json";
+        const urlLevel = "https://file.notion.so/f/s/ee82b112-6c8c-4c40-a3e8-b4e50239b0da/level_method_module_chart_data.json?id=f8954ca4-87d6-40f6-876b-ffaa8b627220&table=block&spaceId=579fe283-28aa-489d-ae65-d683304becfc&expirationTimestamp=1685777215015&signature=NsT25_vXDUzxzs-E8A9NvDrlG9wWLKB2P31wBeojVcs&downloadName=level_method_module_chart_data.json";
 
-        fetch(url)
+        fetch(urlLevel)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -48,13 +51,37 @@
                     data["py"]["level_problem_type"]["level3"]
                 ];
 
-                // 레벨별 문제 유형 비율
-                const levelProblemTypeData = [
-                    data["py"]["level_problem_type_ratio"]["level0"],
-                    data["py"]["level_problem_type_ratio"]["level1"],
-                    data["py"]["level_problem_type_ratio"]["level2"],
-                    data["py"]["level_problem_type_ratio"]["level3"]
+                // 레벨별 문제 유형 비율(lv0~lv3)
+                const level0ProblemTypeData = [
+                    data["py"]["level_problem_type_ratio"]["level0"]["구현"],
+                    data["py"]["level_problem_type_ratio"]["level0"]["기타"]
+                    // data["py"]["level_problem_type_ratio"]["level2"],
+                    // data["py"]["level_problem_type_ratio"]["level3"]
                 ];
+
+                const level1ProblemTypeData = [
+                    data["py"]["level_problem_type_ratio"]["level1"]["구현"],
+                    data["py"]["level_problem_type_ratio"]["level1"]["그리디"],
+                    data["py"]["level_problem_type_ratio"]["level1"]["기타"],
+                    data["py"]["level_problem_type_ratio"]["level1"]["비트연산"],
+                    data["py"]["level_problem_type_ratio"]["level1"]["스택큐"],
+                    data["py"]["level_problem_type_ratio"]["level1"]["완전탐색"],
+                    data["py"]["level_problem_type_ratio"]["level1"]["해시"]
+                ];
+
+                // const level2ProblemTypeData = [
+                //     data["py"]["level_problem_type_ratio"]["level0"]["구현"],
+                //     data["py"]["level_problem_type_ratio"]["level0"]["기타"]
+                //     // data["py"]["level_problem_type_ratio"]["level2"],
+                //     // data["py"]["level_problem_type_ratio"]["level3"]
+                // ];
+
+                // const level3ProblemTypeData = [
+                //     data["py"]["level_problem_type_ratio"]["level0"]["구현"],
+                //     data["py"]["level_problem_type_ratio"]["level0"]["기타"]
+                //     // data["py"]["level_problem_type_ratio"]["level2"],
+                //     // data["py"]["level_problem_type_ratio"]["level3"]
+                // ];
 
                 // // 메소드 모듈 빈도수
                 let methodCountData = [];
@@ -105,19 +132,37 @@
                 });
 
 
-                // 레벨별 문제 유형 비율
-                var levelProblemTypeCountChart = new Chart(document.getElementById('levelProblemTypeData'), {
+                // 레벨별 문제 유형 비율(lv0~lv3)
+                // 레벨별 문제 유형 비율(lv1)
+                var level0ProblemTypeChart = new Chart(document.getElementById('level0-problem-type-chart'), {
                     type: 'doughnut',
                     data: {
-                        labels: ["level0", "level1", "level2", "level3"],
+                        labels: ["구현", "기타"],
                         datasets: [{
-                            data: levelProblemTypeData,
-                            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)'],
-                            borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
+                            data: level0ProblemTypeData,
+                            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+                            // borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
                             borderWidth: 1
                         }]
                     }
                 });
+
+                // 레벨별 문제 유형 비율(lv1)
+                var level1ProblemTypeChart = new Chart(document.getElementById('level1-problem-type-chart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ["구현", "그리디", "기타", "비트연산", "스택큐", "완전탐색", "해시"],
+                        datasets: [{
+                            data: level1ProblemTypeData,
+                            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+                            // borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
+                            borderWidth: 1
+                        }]
+                    }
+                });
+
+
+
 
 
                 // 레벨 별 메서드 카운트 차트
