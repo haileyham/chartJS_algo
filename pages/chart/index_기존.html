@@ -37,54 +37,59 @@
                 console.log(data)
 
                 // 레벨별 문제수
-                const levelCountData = [];
-                for (const key in data["py"]["level_problem_name"]) {
-                    levelCountData.push(data["py"]["level_problem_name"][key])
-                }
-                const levelCountLabels = Object.keys(data["py"]["level_problem_name"]);
+                const levelCountData = [
+                    data["py"]["level_problem_name"]["level0"],
+                    data["py"]["level_problem_name"]["level1"],
+                    data["py"]["level_problem_name"]["level2"],
+                    data["py"]["level_problem_name"]["level3"]
+                ];
 
                 // 레벨별 유형별 문제수
-                const levelProblemTypeCountata = [];
-                for (const key in data["py"]["level_problem_type"]) {
-                    levelProblemTypeCountata.push(data["py"]["level_problem_type"][key])
-                }
-                const levelProblemTypeCountLabels = Object.keys(data["py"]["level_problem_type"]);
+                const levelProblemTypeCountData = [
+                    data["py"]["level_problem_type"]["level0"],
+                    data["py"]["level_problem_type"]["level1"],
+                    data["py"]["level_problem_type"]["level2"],
+                    data["py"]["level_problem_type"]["level3"]
+                ];
 
                 // 레벨별 문제 유형 비율(lv0~lv3)
                 // 레벨별 문제 유형 비율(lv0)
-                const level0ProblemTypeData = [];
-                for (const key in data["py"]["level_problem_type_ratio"]["level0"]) {
-                    level0ProblemTypeData.push(data["py"]["level_problem_type_ratio"]["level0"][key])
-                }
-                const level0ProblemTypeLabels = Object.keys(data["py"]["level_problem_type_ratio"]["level0"]);
+                const level0ProblemTypeData = [
+                    data["py"]["level_problem_type_ratio"]["level0"]["구현"],
+                    data["py"]["level_problem_type_ratio"]["level0"]["기타"]
+                ];
 
                 // 레벨별 문제 유형 비율(lv1)
-                const level1ProblemTypeData = [];
-                for (const key in data["py"]["level_problem_type_ratio"]["level1"]) {
-                    level1ProblemTypeData.push(data["py"]["level_problem_type_ratio"]["level1"][key])
-                }
-                const level1ProblemTypeLabels = Object.keys(data["py"]["level_problem_type_ratio"]["level1"]);
+                const level1ProblemTypeData = [
+                    data["py"]["level_problem_type_ratio"]["level1"]["구현"],
+                    data["py"]["level_problem_type_ratio"]["level1"]["그리디"],
+                    data["py"]["level_problem_type_ratio"]["level1"]["기타"],
+                    data["py"]["level_problem_type_ratio"]["level1"]["비트연산"],
+                    data["py"]["level_problem_type_ratio"]["level1"]["스택큐"],
+                    data["py"]["level_problem_type_ratio"]["level1"]["완전탐색"],
+                    data["py"]["level_problem_type_ratio"]["level1"]["해시"]
+                ];
 
                 // 레벨별 문제 유형 비율(lv2)
-                const level2ProblemTypeData = [];
-                for (const key in data["py"]["level_problem_type_ratio"]["level2"]) {
-                    level2ProblemTypeData.push(data["py"]["level_problem_type_ratio"]["level2"][key])
-                }
-                const level2ProblemTypeLabels = Object.keys(data["py"]["level_problem_type_ratio"]["level2"]);
+                const level2ProblemTypeData = [
+                    data["py"]["level_problem_type_ratio"]["level2"]["DFSBFS"],
+                    data["py"]["level_problem_type_ratio"]["level2"]["구현"],
+                    data["py"]["level_problem_type_ratio"]["level2"]["스택큐"],
+                    data["py"]["level_problem_type_ratio"]["level2"]["완전탐색"]
+                ];
 
                 // 레벨별 문제 유형 비율(lv3)
-                const level3ProblemTypeData = [];
-                for (const key in data["py"]["level_problem_type_ratio"]["level3"]) {
-                    level3ProblemTypeData.push(data["py"]["level_problem_type_ratio"]["level3"][key])
-                }
-                const level3ProblemTypeLabels = Object.keys(data["py"]["level_problem_type_ratio"]["level3"]);
+                const level3ProblemTypeData = [
+                    data["py"]["level_problem_type_ratio"]["level3"]["DFSBFS"],
+                    data["py"]["level_problem_type_ratio"]["level3"]["기타"],
+                    data["py"]["level_problem_type_ratio"]["level3"]["해시"]
+                ];
 
                 // // 메소드 모듈 빈도수
                 const methodCountData = [];
                 for (const key in data["py"]["function_method_sort"]) {
                     methodCountData.push(data["py"]["function_method_sort"][key])
                 }
-                const methodCountLabels = Object.keys(data["py"]["function_method_sort"]);
 
                 // // 레벨별 모듈 메소드(lv0~lv3)
                 // // 레벨별 모듈 메소드(lv0)
@@ -92,14 +97,12 @@
                 for (const key in data["py"]["level_per_function_method"]["level0"]) {
                     level0MethodCountData.push(data["py"]["level_per_function_method"]["level0"][key])
                 }
-                const level0MethodCountLabels = Object.keys(data["py"]["level_per_function_method"]["level0"]);
 
                 // // 레벨별 모듈 메소드(lv1) 
                 const level1MethodCountData = [];
                 for (const key in data["py"]["level_per_function_method"]["level1"]) {
                     level1MethodCountData.push(data["py"]["level_per_function_method"]["level1"][key])
                 }
-                const level1MethodCountLabels = Object.keys(data["py"]["level_per_function_method"]["level1"]);
 
 
                 // // 레벨별 모듈 메소드(lv2)
@@ -107,7 +110,6 @@
                 for (const key in data["py"]["level_per_function_method"]["level2"]) {
                     level2MethodCountData.push(data["py"]["level_per_function_method"]["level2"][key])
                 }
-                const level2MethodCountLabels = Object.keys(data["py"]["level_per_function_method"]["level2"]);
 
 
                 // // 레벨별 모듈 메소드(lv3)
@@ -115,18 +117,14 @@
                 for (const key in data["py"]["level_per_function_method"]["level3"]) {
                     level3MethodCountData.push(data["py"]["level_per_function_method"]["level3"][key])
                 }
-                const level3MethodCountLabels = Object.keys(data["py"]["level_per_function_method"]["level3"]);
-
-
                 // console.log(level3MethodCountData)
 
                 // 레벨별 문제수
 
-                // const labels = Object.keys(data["py"]["level_problem_name"]);
                 const levelCountChart = new Chart(document.getElementById('level-count-chart'), {
                     type: 'pie',
                     data: {
-                        labels: levelCountLabels,
+                        labels: ["level0", "level1", "level2", "level3"],
                         datasets: [{
                             data: levelCountData,
                             backgroundColor: ['rgba(255, 99, 132, 0.8)', 'rgba(54, 162, 235, 0.8)', 'rgba(255, 206, 86, 0.8)', 'rgba(75, 192, 192, 0.8)'],
@@ -140,9 +138,9 @@
                 const levelProblemTypeCountChart = new Chart(document.getElementById('level-problem-type-count-chart'), {
                     type: 'doughnut',
                     data: {
-                        labels: levelProblemTypeCountLabels,
+                        labels: ["level0", "level1", "level2", "level3"],
                         datasets: [{
-                            data: levelProblemTypeCountata,
+                            data: levelCountData,
                             backgroundColor: ['rgba(255, 99, 132, 0.8)', 'rgba(54, 162, 235, 0.8)', 'rgba(255, 206, 86, 0.8)', 'rgba(75, 192, 192, 0.8)'],
                             borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
                             borderWidth: 1
@@ -155,7 +153,7 @@
                 const level0ProblemTypeChart = new Chart(document.getElementById('level0-problem-type-chart'), {
                     type: 'doughnut',
                     data: {
-                        labels: level0ProblemTypeLabels,
+                        labels: ["구현", "기타"],
                         datasets: [{
                             data: level0ProblemTypeData,
                             backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
@@ -169,7 +167,7 @@
                 const level1ProblemTypeChart = new Chart(document.getElementById('level1-problem-type-chart'), {
                     type: 'doughnut',
                     data: {
-                        labels: level1ProblemTypeLabels,
+                        labels: ["구현", "그리디", "기타", "비트연산", "스택큐", "완전탐색", "해시"],
                         datasets: [{
                             data: level1ProblemTypeData,
                             backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
@@ -183,7 +181,7 @@
                 const level2ProblemTypeChart = new Chart(document.getElementById('level2-problem-type-chart'), {
                     type: 'doughnut',
                     data: {
-                        labels: level2ProblemTypeLabels,
+                        labels: ["DFSBFS", "구현", "스택큐", "완전탐색"],
                         datasets: [{
                             data: level2ProblemTypeData,
                             backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
@@ -197,7 +195,7 @@
                 const level3ProblemTypeChart = new Chart(document.getElementById('level3-problem-type-chart'), {
                     type: 'doughnut',
                     data: {
-                        labels: level3ProblemTypeLabels,
+                        labels: ["DFSBFS", "기타", "해시"],
                         datasets: [{
                             data: level3ProblemTypeData,
                             backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)'],
@@ -211,7 +209,7 @@
                 const methodCountLvChart = new Chart(document.getElementById('method-count-chart'), {
                     type: 'bar',
                     data: {
-                        labels: methodCountLabels,
+                        labels: ["range", "len", ".append", "int", "str", "sorted", "sum", "ord", "max", ".join", "set", ".count", "list", ".pop", ".sort", ".index", ".popleft", ".lower", ".replace", ".split", "print", "min", "chr", ".upper", "map", "zip", ".isdigit", ".items", ".find", "abs", ".sub", ".strip", ".compile", "bin", ".islower", "input", ".remove", "enumerate", ".isupper", ".insert", ".get", ".reverse", ".findall", ".isqrt", ".gcd", ".fromkeys", "reversed", ".zfill", ".keys", "divmod", "dict", ".values", ".startswith", "math", "deque", "re", "combinations", "collections", "ceil", "itertools"],
                         datasets: [{
                             data: methodCountData,
                             backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
@@ -235,7 +233,7 @@
                 const methodCountLv0Chart = new Chart(document.getElementById('level0-method-count-chart'), {
                     type: 'bar',
                     data: {
-                        labels: level0MethodCountLabels,
+                        labels: [".append", ".count", ".find", ".fromkeys", ".index", ".insert", ".isdigit", ".islower", ".isupper", ".items", ".join", ".lower", ".pop", ".remove", ".replace", ".reverse", ".sort", ".split", ".startswith", ".sub", ".upper", "abs", "input", "int", "len", "list", "max", "min", "print", "range", "re", "set", "sorted", "str", "sum"],
                         datasets: [{
                             data: level0MethodCountData,
                             backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
@@ -258,7 +256,7 @@
                 const methodCountLv1Chart = new Chart(document.getElementById('level1-method-count-chart'), {
                     type: 'bar',
                     data: {
-                        labels: level1MethodCountLabels,
+                        labels: [".append", ".compile", ".count", ".find", ".findall", ".gcd", ".get", ".index", ".isdigit", ".islower", ".isqrt", ".isupper", ".items", ".join", ".keys", ".lower", ".pop", ".remove", ".replace", ".sort", ".split", ".strip", ".sub", ".upper", ".values", ".zfill", "abs", "bin", "chr", "combinations", "dict", "enumerate", "input", "int", "itertools", "len", "list", "map", "math", "max", "min", "ord", "print", "range", "re", "reversed", "set", "sorted", "str", "sum", "zip"],
                         datasets: [{
                             data: level1MethodCountData,
                             backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
@@ -281,7 +279,7 @@
                 const methodCountLv2Chart = new Chart(document.getElementById('level2-method-count-chart'), {
                     type: 'bar',
                     data: {
-                        labels: level2MethodCountLabels,
+                        labels: [".append", ".count", ".join", ".lower", ".pop", ".popleft", ".split", ".upper", "bin", "ceil", "collections", "deque", "divmod", "int", "len", "list", "map", "math", "max", "min", "range", "sorted", "str", "sum", "zip"],
                         datasets: [{
                             data: level2MethodCountData,
                             backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
@@ -304,7 +302,7 @@
                 const methodCountLv3Chart = new Chart(document.getElementById('level3-method-count-chart'), {
                     type: 'bar',
                     data: {
-                        labels: level3MethodCountLabels,
+                        labels: [".append", ".index", ".items", ".popleft", ".sort", "collections", "deque", "enumerate", "len", "max", "print", "range", "sorted", "zip"],
                         datasets: [{
                             data: level3MethodCountData,
                             backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
