@@ -24,8 +24,8 @@
             .then(data => {
                 console.log(data)
 
-                let aDataKeys = Object.keys(data.py);
-                let aDataValues = Object.values(data.py);
+                let aDataKeys = Object.keys(data.py["level_per_function_method"]);
+                let aDataValues = Object.values(data.py["level_per_function_method"]);
                 let z = [];
                 aDataValues.forEach(i => {
                     z.push(...Object.keys(i));
