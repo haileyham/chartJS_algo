@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Algoview</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>내코는석자다 진짜</h1>
+    <canvas id="level-method-count-chart">레벨별 모듈 메소드</canvas>
+    <script>
+        const urlLevel = "./data.json"
+        fetch(urlLevel)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+
+                let aDataKeys = Object.keys(data.py);
+                let aDataValues = Object.values(data.py);
+                let z = [];
+                aDataValues.forEach(i => {
+                    z.push(...Object.keys(i));
+                });
+                let set = new Set(z);
+                const datasets = [];
+
+                set.forEach(item => {
+                    datasets.push({
+                        'label': item,
+                        'data': []
+                    });
+                });
+
+
+                aDataValues.forEach(el => {
+                    [...set].forEach((funcName, idx) => {
+                        datasets[idx].data.push(el[funcName] || 0)
+                    })
+                })
+
+                const problemTypeFunctionMethodChart = new Chart(
+                    document.getElementById('level-method-count-chart'),
+                    {
+                        type: 'bar',
+                        data: {
+                            labels: set,
+                            datasets: datasets,
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                x: {
+                                    stacked: true,
+                                },
+                                y: {
+                                    stacked: true
+                                }
+                            },
+                        },
+                    }
+                );
+            });
+    </script>
+</body>
+
+</html>
