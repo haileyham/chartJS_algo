@@ -47,7 +47,7 @@
 
 
                 aDataValues.forEach(el => {
-                    [...z].forEach((funcName, idx) => {
+                    [...set].forEach((funcName, idx) => {
                         datasets[idx].data.push(el[funcName] || 0)
                     })
                 })
