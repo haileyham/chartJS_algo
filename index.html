@@ -46,7 +46,7 @@
             console.log(datasets);
 
 
-                aDataKeys.forEach(el => {
+                aDataValues.forEach(el => {
                     [...set].forEach((funcName, idx) => {
                         datasets[idx].data.push(el[funcName] || 0)
                     })
